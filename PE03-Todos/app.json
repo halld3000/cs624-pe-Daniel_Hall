@@ -1,11 +1,11 @@
 {
   "expo": {
-    "name": "todos",
-    "slug": "todos",
+    "name": "PE03-Todos",
+    "slug": "PE03-Todos",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "todos",
+    "scheme": "pe03todos",
     "userInterfaceStyle": "automatic",
     "ios": {
       "icon": "./assets/expo.icon"

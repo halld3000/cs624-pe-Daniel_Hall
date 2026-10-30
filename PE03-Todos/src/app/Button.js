@@ -2,15 +2,14 @@ import React from 'react'
 import {View, Text, StyleSheet, TouchableHighlight } from 'react-native'
 
 const Button = ({ submitTodo }) => (
-   <View style={StyleSheet.buttonContainer}>
     <TouchableHighlight underlayColor='#efefef'
-      style={StyleSheet.button}
-     onPress={submitTodo}>   
+      style={styles.button}
+      onPress={submitTodo}>   
+      
       <Text style={StyleSheet.submit}>
          Submit   
       </Text> 
     </TouchableHighlight>
-   </View> 
 )
 
 const styles = StyleSheet.create({
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
         paddingLeft: 20,
         paddingRight: 20,
         backgroundColor: '#ffffff',
-        width: 200,
+        width: 170,
         marginRight: 20,
         marginTop: 15,
         borderWidth: 1,
@@ -30,9 +29,9 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    submit: {
+    text: {
         color: '#666666',
-        fontWeight: '600'
+        fontSize: '14'
     }
 })
 
