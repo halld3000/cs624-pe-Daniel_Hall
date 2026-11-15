@@ -3,41 +3,61 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import update from 'immutability-helper';
 
-import { Platform, Image, StyleSheet, Text, View, TouchableHighlight, ScrollView} from 'react-native';
-
+import {
+  Platform,
+  Image,
+  StyleSheet,
+  Text,
+  View,
+  TouchableHighlight,
+  ScrollView
+} from 'react-native';
 
 const userImage = require('../../assets/images/user.png');
 
 const profiles = [
   {
+    image: userImage,
     name: 'John Doe',
     occupation: 'React Native Developer',
     description: 'John is a really great JavaScript developer. He loves using JS to build React Native applications for iOS and Android.',
+    showThumbnail: true
   },
   {
+    image: userImage,
     name: 'John Doe',
     occupation: 'React Native Developer',
     description: 'John is a really great JavaScript developer. He loves using JS to build React Native applications for iOS and Android.',
+    showThumbnail: true
   },
   {
+    image: userImage,
     name: 'John Doe',
     occupation: 'React Native Developer',
     description: 'John is a really great JavaScript developer. He loves using JS to build React Native applications for iOS and Android.',
+    showThumbnail: true
   },
   {
+    image: userImage,
     name: 'John Doe',
     occupation: 'React Native Developer',
     description: 'John is a really great JavaScript developer. He loves using JS to build React Native applications for iOS and Android.',
+    showThumbnail: true
   },
   {
+    image: userImage,
     name: 'John Doe',
     occupation: 'React Native Developer',
     description: 'John is a really great JavaScript developer. He loves using JS to build React Native applications for iOS and Android.',
+    showThumbnail: true
   },
   {
+    image: userImage,
     name: 'John Doe',
     occupation: 'React Native Developer',
-    description: 'John is a really great JavaScript developer. He loves using JS to build React Native applications for iOS and Android.',},
+    description: 'John is a really great JavaScript developer. He loves using JS to build React Native applications for iOS and Android.',
+    showThumbnail: true
+  }
 ];
 
 const ProfileCard = (props) => {
@@ -109,7 +129,7 @@ export default class App extends Component {
     super(props, context);
 
     this.state = {
-      data: data
+      data: profiles
     };
   }
 
@@ -121,26 +141,49 @@ export default class App extends Component {
     this.setState({
       data: update(this.state.data, {
         [index]: {
-          showThumbnail: {$set: showThumbnail}}})
+          showThumbnail: {$set: showThumbnail}
+        }
+      })
     });
   };
 
-    render() {
-    const list = this.state.data.map(function(item, index) { 
-      const { image, name, occupation, description, showThumbnail } = item;
-      return <ProfileCard key={'card-' + index}
-                   image={image}
-                   name={name}
-                   occupation={occupation}
-                   description={description}
-                   onPress={this.handleProfileCardPress.bind(this, index)}
-                   showThumbnail={showThumbnail}/>
+  render() {
+
+    const list = this.state.data.map(function(item, index) {
+
+      const {
+        image,
+        name,
+        occupation,
+        description,
+        showThumbnail
+      } = item;
+
+      return (
+        <View
+          key={'card-' + index}
+          style={styles.cardSlot}>
+
+          <ProfileCard
+            image={image}
+            name={name}
+            occupation={occupation}
+            description={description}
+            onPress={this.handleProfileCardPress.bind(this, index)}
+            showThumbnail={showThumbnail}
+          />
+
+        </View>
+      );
+
     }, this);
 
     return (
-      <View style={styles.container}>
-        {list} 
-      </View>
+      <ScrollView style={styles.scrollContainer}>
+        <View style={styles.container}>
+          {list}
+        </View>
+      </ScrollView>
     );
   }
 }
@@ -154,7 +197,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'white'
   },
 
-   container: {
+  container: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     justifyContent: 'center',
@@ -266,7 +309,7 @@ const styles = StyleSheet.create({
   },
 
   cardThumbnail: {
-    transform: [{scale: 0.2}]
+    transform: [{scale: 0.5}]
   }
 
 });
